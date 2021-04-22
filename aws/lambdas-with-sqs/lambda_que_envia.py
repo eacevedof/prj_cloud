@@ -4,6 +4,12 @@ import json
 import logging
 from pprint import pprint
 
+def get_config() -> dict:
+    return {
+        "account": "aaaacccc",
+        "region": "eu-west-1",
+    }
+
 def get_logger():
     log_format = '[%(asctime)s]: %(levelname)-4s in ' + \
                     '%(module)s:%(lineno) d[%(funcName)s]: %(message)s'
@@ -13,6 +19,8 @@ def get_logger():
     return logger
 
 logger = get_logger()
+
+
 
 def lambda_handler(event, context):
     logger.info("start")
