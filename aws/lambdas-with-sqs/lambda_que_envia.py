@@ -7,13 +7,14 @@ from pprint import pprint
 
 def get_config(key:str) -> str:
     config = {
-        "account": "aaaacccc",
+        "account": "xxx",
         "region": "eu-west-1",
     }
     return config[key]
 
 
 def get_logger():
+    #[INFO]	2021-04-22T19:10:08.779Z	417574f5-e7ba-4770-9cfe-50bf66afc117
     log_format = '[%(asctime)s]: %(levelname)-4s in ' + \
                     '%(module)s:%(lineno) d[%(funcName)s]: %(message)s'
     logging.basicConfig(level=logging.ERROR, format=log_format)
