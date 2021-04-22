@@ -1,5 +1,4 @@
 # lambda-que-recibe
-import boto3
 import json
 import logging
 from pprint import pprint
