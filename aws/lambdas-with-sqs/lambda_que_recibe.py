@@ -4,6 +4,7 @@ import json
 import logging
 from pprint import pprint
 
+
 def get_logger():
     log_format = '[%(asctime)s]: %(levelname)-4s in ' + \
                     '%(module)s:%(lineno) d[%(funcName)s]: %(message)s'
@@ -12,7 +13,9 @@ def get_logger():
     logger.setLevel(logging.DEBUG)
     return logger
 
+
 logger = get_logger()
+
 
 def get_account_id_from_event(event) -> str:
     records = event.get('Records', [])
@@ -32,8 +35,8 @@ def get_account_id_from_event(event) -> str:
         logger.error("[lambda-que-recibe] Not account_id within message body")
         return ""
 
-
     return account_id
+
 
 def lambda_handler(event, context):
     logger.info("start recibe")
