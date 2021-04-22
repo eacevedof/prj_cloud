@@ -5,11 +5,12 @@ import logging
 from pprint import pprint
 
 
-def get_config() -> dict:
-    return {
+def get_config(key:str) -> str:
+    config = {
         "account": "aaaacccc",
         "region": "eu-west-1",
     }
+    return config[key]
 
 
 def get_logger():
@@ -27,16 +28,19 @@ logger = get_logger()
 def lambda_handler(event, context):
     logger.info("start")
 
-    account_id="1234"
-    sqs_url = "https://sqs.eu-west-1.amazonaws.com/aaaacccc/sqs-trigger-lambda-que-recibe"
+    sqs_url = f"https://sqs.{get_config('region')}.amazonaws.com/{get_config('account')}/sqs-trigger-lambda-que-recibe"
 
-    sqs_client = boto3.client('sqs', region_name="eu-west-1")
+    sqs_client = boto3.client(
+        'sqs',
+        region_name=get_config("region")
+    )
+
     response = sqs_client.send_message_batch(
         QueueUrl=sqs_url,
         Entries=[{
             "Id": "1",
             "MessageBody": json.dumps({
-                "accountId": account_id
+                "accountId": "3456"
             }),
         }]
     )
