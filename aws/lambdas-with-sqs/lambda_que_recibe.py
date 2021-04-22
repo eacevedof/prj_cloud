@@ -50,6 +50,7 @@ def lambda_handler(event, context):
 
     logger.info(f"end recibe account-id: {account_id}")
 
+
 """
 {
 	'Records': [
