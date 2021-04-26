@@ -15,7 +15,7 @@ def get_logger():
 
 logger = get_logger()
 
-
+# :)
 def get_account_id_from_event(event) -> str:
     records = event.get('Records', [])
     logger.info("event.get(Records)")
